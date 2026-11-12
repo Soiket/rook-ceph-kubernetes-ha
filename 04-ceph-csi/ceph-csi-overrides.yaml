@@ -1,0 +1,20 @@
+operatorConfig:
+  driverSpecDefaults:
+    controllerPlugin:
+      replicas: 3
+
+drivers:
+  rbd:
+    enabled: true
+    name: rook-ceph.rbd.csi.ceph.com
+    controllerPlugin:
+      replicas: 3
+
+  cephfs:
+    enabled: false
+
+  nfs:
+    enabled: false
+
+  nvmeof:
+    enabled: false

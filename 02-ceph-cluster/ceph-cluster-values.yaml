@@ -1,0 +1,77 @@
+
+operatorNamespace: rook-ceph
+
+cephClusterSpec:
+  cephVersion:
+    image: quay.io/ceph/ceph:v19.2.3
+
+  dataDirHostPath: /var/lib/rook
+
+  mon:
+    count: 3
+    allowMultiplePerNode: false
+
+  mgr:
+    count: 2
+    allowMultiplePerNode: false
+
+  dashboard:
+    enabled: true
+    ssl: true
+
+  network:
+    provider: host
+    addressRanges:
+      public:
+        - "10.10.11.0/24"
+      cluster:
+        - "10.10.12.0/24"
+    connections:
+      requireMsgr2: true
+
+  crashCollector:
+    disable: false
+
+  placement:
+    all:
+      tolerations:
+        - key: node-role.kubernetes.io/control-plane
+          operator: Exists
+          effect: NoSchedule
+
+  storage:
+    useAllNodes: false
+    useAllDevices: false
+    nodes:
+      - name: k8s-storage-node1
+        devices:
+          - name: /dev/disk/by-id/scsi-SATA_MZ7LH3T8HMLT0D3_S451NY0M812131
+          - name: /dev/disk/by-id/scsi-SATA_MZ7LH3T8HMLT0D3_S451NY0M812137
+          - name: /dev/disk/by-id/scsi-SATA_MZ7LH3T8HMLT0D3_S451NY0M812134
+          - name: /dev/disk/by-id/scsi-SATA_MZ7LH3T8HMLT0D3_S451NY0M812145
+
+      - name: k8s-storage-node2
+        devices:
+          - name: /dev/disk/by-id/scsi-SATA_MZ7LH3T8HMLT0D3_S451NY0M812132
+          - name: /dev/disk/by-id/scsi-SATA_MZ7LH3T8HMLT0D3_S451NY0M812141
+          - name: /dev/disk/by-id/scsi-SATA_MZ7LH3T8HMLT0D3_S451NY0M812133
+          - name: /dev/disk/by-id/scsi-SATA_MZ7LH3T8HMLT0D3_S451NY0M812136
+
+      - name: k8s-storage-node3
+        devices:
+          - name: /dev/disk/by-id/scsi-SATA_MZ7LH3T8HMLT0D3_S451NY0M812085
+          - name: /dev/disk/by-id/scsi-SATA_MZ7LH3T8HMLT0D3_S451NY0M812067
+          - name: /dev/disk/by-id/scsi-SATA_MZ7LH3T8HMLT0D3_S451NY0M812091
+          - name: /dev/disk/by-id/scsi-SATA_MZ7LH3T8HMLT0D3_S451NY0M812147
+
+toolbox:
+  enabled: true
+  tolerations:
+    - key: node-role.kubernetes.io/control-plane
+      operator: Exists
+      effect: NoSchedule
+
+cephBlockPools: []
+cephFileSystems: []
+cephObjectStores: []
+

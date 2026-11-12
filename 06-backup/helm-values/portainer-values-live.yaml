@@ -1,0 +1,58 @@
+adminPassword:
+  existingSecret: ""
+dbEncryption:
+  existingSecret: ""
+enterpriseEdition:
+  enabled: false
+  image:
+    pullPolicy: Always
+    repository: portainer/portainer-ee
+    tag: 2.45.3
+extraEnv: []
+feature:
+  flags: []
+image:
+  pullPolicy: Always
+  repository: portainer/portainer-ce
+  tag: 2.45.3
+imagePullSecrets: []
+ingress:
+  annotations: {}
+  enabled: false
+  hosts:
+  - host: null
+    paths: []
+  ingressClassName: ""
+  tls: []
+localMgmt: true
+mtls:
+  enable: false
+  existingSecret: ""
+nodeSelector: {}
+persistence:
+  annotations: {}
+  enabled: true
+  existingClaim: null
+  size: 10Gi
+  storageClass: ceph-rbd-retain
+replicaCount: 1
+resources: {}
+service:
+  annotations: {}
+  edgeNodePort: 30776
+  edgePort: 8000
+  httpNodePort: 30777
+  httpPort: 9000
+  httpsNodePort: 30779
+  httpsPort: 9443
+  type: NodePort
+serviceAccount:
+  annotations: {}
+  name: portainer-sa-clusteradmin
+tls:
+  existingSecret: ""
+  force: false
+tolerations: []
+trusted_origins:
+  domains: ""
+  enabled: false

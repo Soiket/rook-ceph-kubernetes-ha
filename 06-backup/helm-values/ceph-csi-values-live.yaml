@@ -1,0 +1,296 @@
+cephConnections:
+- crushLocationLabels: []
+  monitors: {}
+  name: ""
+  rbdMirrorDaemonCount: 1
+clientProfileReplications:
+- localClientProfile: ""
+  name: ""
+  rbd:
+    poolMapping: []
+  remoteClientProfile: ""
+clientProfiles:
+- cephConnection:
+    name: ""
+  cephFs:
+    cephCsiSecrets:
+      controllerPublishSecret:
+        name: ""
+        namespace: ""
+      nodePublishSecret:
+        name: ""
+        namespace: ""
+    fuseMountOptions: {}
+    kernelMountOptions: {}
+    radosNamespace: ""
+    subVolumeGroup: ""
+  name: ""
+  nvmeof:
+    cephCsiSecrets:
+      controllerPublishSecret:
+        name: ""
+        namespace: ""
+      nodePublishSecret:
+        name: ""
+        namespace: ""
+    radosNamespace: ""
+  rbd:
+    cephCsiSecrets:
+      controllerPublishSecret:
+        name: ""
+        namespace: ""
+      nodePublishSecret:
+        name: ""
+        namespace: ""
+    radosNamespace: ""
+drivers:
+  cephfs:
+    attachRequired: true
+    cephFsClientType: kernel
+    clusterName: ""
+    controllerPlugin:
+      containerExtraArgs: {}
+      deploymentStrategy: {}
+      hostNetwork: false
+      privileged: false
+      replicas: 1
+      resources: {}
+      tolerations: []
+    deployCsiAddons: false
+    enableFencing: false
+    enabled: false
+    encryption:
+      configMapRef:
+        name: ""
+    fsGroupPolicy: File
+    fuseMountOptions: {}
+    generateOMapInfo: false
+    grpcTimeout: 30
+    imageSet:
+      name: ""
+    kernelMountOptions: {}
+    log:
+      rotation:
+        enabled: true
+        logHostPath: ""
+        maxFiles: 7
+        maxLogSize: 10G
+        periodicity: daily
+      verbosity: 0
+    name: rook-ceph.cephfs.csi.ceph.com
+    nodePlugin:
+      affinity: {}
+      annotations: {}
+      containerExtraArgs: {}
+      imagePullPolicy: IfNotPresent
+      labels: {}
+      priorityClassName: ""
+      tolerations: []
+      volumes: []
+    snapshotPolicy: volumeSnapshot
+    storageClasses: []
+    volumeAttributesClasses: []
+    volumeGroupSnapshotClasses: []
+    volumeSnapshotClasses: []
+  nfs:
+    attachRequired: true
+    cephFsClientType: kernel
+    clusterName: ""
+    controllerPlugin:
+      containerExtraArgs: {}
+      deploymentStrategy: {}
+      hostNetwork: false
+      privileged: false
+      replicas: 1
+      resources: {}
+      tolerations: []
+    deployCsiAddons: false
+    enableFencing: false
+    enabled: false
+    encryption:
+      configMapRef:
+        name: ""
+    fsGroupPolicy: File
+    fuseMountOptions: {}
+    generateOMapInfo: false
+    grpcTimeout: 30
+    imageSet:
+      name: ""
+    kernelMountOptions: {}
+    log:
+      rotation:
+        enabled: true
+        logHostPath: ""
+        maxFiles: 7
+        maxLogSize: 10G
+        periodicity: daily
+      verbosity: 0
+    name: rook-ceph.nfs.csi.ceph.com
+    nodePlugin:
+      affinity: {}
+      annotations: {}
+      containerExtraArgs: {}
+      imagePullPolicy: IfNotPresent
+      labels: {}
+      priorityClassName: ""
+      serviceAccountName: ""
+      tolerations: []
+      volumes: []
+    snapshotPolicy: volumeSnapshot
+    storageClasses: []
+    volumeAttributesClasses: []
+    volumeGroupSnapshotClasses: []
+    volumeSnapshotClasses: []
+  nvmeof:
+    attachRequired: true
+    cephFsClientType: kernel
+    clusterName: ""
+    controllerPlugin:
+      containerExtraArgs: {}
+      deploymentStrategy: {}
+      hostNetwork: false
+      privileged: false
+      replicas: 1
+      resources: {}
+      tolerations: []
+    deployCsiAddons: false
+    enableFencing: false
+    enabled: false
+    encryption:
+      configMapRef:
+        name: ""
+    fsGroupPolicy: File
+    fuseMountOptions: {}
+    generateOMapInfo: false
+    grpcTimeout: 30
+    imageSet:
+      name: ""
+    kernelMountOptions: {}
+    log:
+      rotation:
+        enabled: true
+        logHostPath: ""
+        maxFiles: 7
+        maxLogSize: 10G
+        periodicity: daily
+      verbosity: 0
+    name: rook-ceph.nvmeof.csi.ceph.com
+    nodePlugin:
+      affinity: {}
+      annotations: {}
+      containerExtraArgs: {}
+      imagePullPolicy: IfNotPresent
+      labels: {}
+      priorityClassName: ""
+      tolerations: []
+      volumes: []
+    snapshotPolicy: none
+    storageClasses: []
+    volumeAttributesClasses: []
+    volumeGroupSnapshotClasses: []
+    volumeSnapshotClasses: []
+  rbd:
+    attachRequired: true
+    cephFsClientType: kernel
+    clusterName: ""
+    controllerPlugin:
+      containerExtraArgs: {}
+      deploymentStrategy: {}
+      hostNetwork: false
+      privileged: false
+      replicas: 3
+      resources: {}
+      tolerations: []
+    deployCsiAddons: false
+    enableFencing: false
+    enabled: true
+    encryption:
+      configMapRef:
+        name: ""
+    fsGroupPolicy: File
+    fuseMountOptions: {}
+    generateOMapInfo: false
+    grpcTimeout: 30
+    imageSet:
+      name: ""
+    kernelMountOptions: {}
+    log:
+      rotation:
+        enabled: true
+        logHostPath: ""
+        maxFiles: 7
+        maxLogSize: 10G
+        periodicity: daily
+      verbosity: 0
+    name: rook-ceph.rbd.csi.ceph.com
+    nodePlugin:
+      affinity: {}
+      annotations: {}
+      containerExtraArgs: {}
+      imagePullPolicy: IfNotPresent
+      labels: {}
+      priorityClassName: ""
+      tolerations: []
+      volumes: []
+    snapshotPolicy: none
+    storageClasses: []
+    volumeAttributesClasses: []
+    volumeGroupSnapshotClasses: []
+    volumeSnapshotClasses: []
+extraDeploy: []
+imagePullSecrets: []
+openshift:
+  enabled: false
+  sccClusterRoleName: ceph-csi-operator-scc-user
+operatorConfig:
+  create: true
+  driverSpecDefaults:
+    attachRequired: true
+    cephFsClientType: kernel
+    clusterName: ""
+    controllerPlugin:
+      affinity: {}
+      containerExtraArgs: {}
+      deploymentStrategy: {}
+      hostNetwork: false
+      imagePullPolicy: IfNotPresent
+      priorityClassName: system-cluster-critical
+      privileged: false
+      replicas: 3
+      resources: {}
+      tolerations: []
+    deployCsiAddons: false
+    enableFencing: false
+    encryption:
+      configMapRef:
+        name: ""
+    fsGroupPolicy: File
+    fuseMountOptions: {}
+    generateOMapInfo: false
+    grpcTimeout: 30
+    imageSet:
+      name: rook-csi-operator-image-set-configmap
+    kernelMountOptions: {}
+    log:
+      rotation:
+        enabled: true
+        logHostPath: ""
+        maxFiles: 7
+        maxLogSize: 10G
+        periodicity: daily
+      verbosity: 0
+    nodePlugin:
+      affinity: {}
+      annotations: {}
+      containerExtraArgs: {}
+      imagePullPolicy: IfNotPresent
+      kubeletDirPath: /var/lib/kubelet
+      labels: {}
+      priorityClassName: system-node-critical
+      tolerations: []
+      updateStrategy: {}
+      volumes: []
+    snapshotPolicy: none
+  name: ceph-csi-operator-config
+  namespace: rook-ceph
+secrets: []

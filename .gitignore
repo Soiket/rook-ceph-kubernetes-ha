@@ -1,0 +1,22 @@
+# Kubernetes secrets and credentials
+*secret*.yaml
+*secrets*.yaml
+kubeconfig
+*.key
+*.pem
+*.crt
+*.p12
+
+# Private credentials
+.env
+.env.*
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.log
+
+# Runtime and generated files
+*.pid
+*.sock

@@ -1,0 +1,139 @@
+allowLoopDevices: false
+annotations: {}
+ceph-csi-operator:
+  controllerManager:
+    manager:
+      args:
+      - --leader-elect
+      containerSecurityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+          - ALL
+        readOnlyRootFilesystem: true
+      env:
+        csiServiceAccountPrefix: ""
+        watchNamespace: ""
+      image:
+        repository: quay.io/cephcsi/ceph-csi-operator
+        tag: v1.1.0
+      resources:
+        limits:
+          cpu: 500m
+          memory: 128Mi
+        requests:
+          cpu: 10m
+          memory: 64Mi
+    nodeSelector: {}
+    podSecurityContext:
+      runAsNonRoot: true
+    priorityClassName: ""
+    replicas: 1
+    serviceAccount:
+      annotations: {}
+    tolerations: []
+    topologySpreadConstraints: []
+  fullnameOverride: ceph-csi
+  global: {}
+  imagePullSecrets: []
+  kubernetesClusterDomain: cluster.local
+  nameOverride: ceph-csi
+  openshift:
+    enabled: false
+  serviceAccount:
+    annotations: {}
+    automount: true
+    create: true
+    name: ""
+cephCommandsTimeoutSeconds: "15"
+containerSecurityContext:
+  capabilities:
+    drop:
+    - ALL
+  runAsGroup: 2016
+  runAsNonRoot: true
+  runAsUser: 2016
+crds:
+  enabled: true
+csi:
+  attacher:
+    repository: ""
+    tag: ""
+  cephcsi:
+    repository: ""
+    tag: ""
+  csiAddons:
+    repository: ""
+    tag: ""
+  installCsiOperator: true
+  provisioner:
+    repository: ""
+    tag: ""
+  registrar:
+    repository: ""
+    tag: ""
+  resizer:
+    repository: ""
+    tag: ""
+  serviceMonitor:
+    enabled: false
+    interval: 5s
+    labels: {}
+    namespace: null
+  snapshotter:
+    repository: ""
+    tag: ""
+currentNamespaceOnly: false
+customHostnameLabel: null
+deleteUnusedCrushRules: true
+disableDeviceHotplug: false
+discover:
+  nodeAffinity: null
+  podLabels: null
+  resources: null
+  toleration: null
+  tolerationKey: null
+  tolerations:
+  - effect: NoSchedule
+    key: node-role.kubernetes.io/control-plane
+    operator: Exists
+discoverDaemonUdev: null
+discoveryDaemonInterval: 60m
+enableDiscoveryDaemon: false
+enableOBCWatchOperatorNamespace: true
+enforceHostNetwork: false
+hostpathRequiresPrivileged: false
+image:
+  pullPolicy: IfNotPresent
+  repository: docker.io/rook/ceph
+  tag: v1.21.2
+imagePullSecrets: null
+library:
+  global: {}
+logLevel: INFO
+monRunAsRoot: false
+monitoring:
+  enabled: false
+nodeSelector: {}
+obcAllowAdditionalConfigFields: maxObjects,maxSize
+obcProvisionerNamePrefix: null
+operatorPodLabels: {}
+priorityClassName: null
+rbacAggregate:
+  enableOBCs: false
+rbacEnable: true
+reconcileConcurrentClusters: 1
+resources:
+  limits:
+    memory: 512Mi
+  requests:
+    cpu: 200m
+    memory: 128Mi
+revisionHistoryLimit: null
+scaleDownOperator: false
+tolerations:
+- effect: NoSchedule
+  key: node-role.kubernetes.io/control-plane
+  operator: Exists
+unreachableNodeTolerationSeconds: 5
+useOperatorHostNetwork: null
